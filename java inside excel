@@ -1,0 +1,25 @@
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+public class exel_denemem {	
+		public static void main (String[] args ) throws IOException	
+		   {
+			   Workbook wb = new HSSFWorkbook();
+			    Sheet sheet1 = wb.createSheet("first sheet");//ilk sayfa
+				Row row = sheet1.createRow((short)0);
+			    Cell cell = row.createCell(1);
+			    cell.setCellValue("try text"); 
+			    Sheet sheet2 = wb.createSheet("second sheet");//ikinci sayfa row ve cell komutları ile satır ve sutun oluşturabilir editliyebilirsiniz
+				Row row1 = sheet2.createRow(0);
+			    Cell cell1 = row1.createCell(1);
+			    cell1.setCellValue("second sheet application");	
+		       FileOutputStream fileOut = new FileOutputStream("C:\\workbook.xls");//erişim hatası verirse dosya yolunu değiştirin
+		       wb.write(fileOut);
+		       fileOut.close();
+		   }
+}
